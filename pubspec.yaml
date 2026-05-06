@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   supabase_flutter: ^2.12.2
-
+  background_app_bar: ^2.1.0+1
   carousel_slider: ^5.1.2
   appbar_animated: ^0.0.3
 
