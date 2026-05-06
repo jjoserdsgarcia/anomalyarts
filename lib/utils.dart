@@ -1,10 +1,9 @@
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
+import 'dart:crypto';
 
 class Utils {
-  static String gerarMD5(String texto) {
-    var bytes = utf8.encode(texto);
-    var digest = md5.convert(bytes);
+  static String gerarMd5(String texto) {
+    final bytes = utf8.encode(texto);
+    final digest = md5.convert(bytes);
     return digest.toString();
   }
 }
