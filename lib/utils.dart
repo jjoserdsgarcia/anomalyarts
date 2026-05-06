@@ -1,4 +1,5 @@
-import 'dart:crypto';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 
 class Utils {
   static String gerarMd5(String texto) {
