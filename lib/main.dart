@@ -1,3 +1,4 @@
+import 'package:anomalyarts/paginainicial.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,6 +9,7 @@ void main() async {
     url: 'https://yszngxacburntabowhyg.supabase.co',
     anonKey: 'sb_publishable_1kbUdRFIHYT0eQOa_xCW9A_0USF8Lf-',
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Paginainicial(),
     );
   }
 }
