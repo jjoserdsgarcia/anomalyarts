@@ -1,4 +1,5 @@
 import 'package:anomalyarts/paginainicial.dart';
+import 'package:anomalyarts/telalogin.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Paginainicial(),
+      home: const Telalogin(),
     );
   }
 }
