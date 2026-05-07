@@ -1,4 +1,8 @@
+import 'package:anomalyarts/paginainicial.dart';
+import 'package:anomalyarts/paginainicialadmin.dart';
+import 'package:anomalyarts/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Telalogin extends StatefulWidget {
   const Telalogin({super.key});
@@ -48,8 +52,51 @@ class _TelaloginState extends State<Telalogin> {
               },
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                  final supabase = Supabase.instance.client;
+                  final usuarios = await supabase
+                      .from('login')
+                      .select()
+                      .eq('usuario', _loginController)
+                      .eq('senha', Utils.gerarMd5(_senhaController.text));
+                  if (usuarios.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Usuário ou Senha incorretos.'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Usuário autenticado com sucesso.'),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          63,
+                          130,
+                          255,
+                        ),
+                      ),
+                    );
+                    if (usuarios.first['is_adm']) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return TelaInicialAdmin();
+                          },
+                        ),
+                      );
+                    } else {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Paginainicial();
+                          },
+                        ),
+                      );
+                    }
+                  }
                   // :)
                 }
               },
