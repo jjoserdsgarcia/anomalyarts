@@ -10,6 +10,6 @@ class Paginainicial extends StatefulWidget {
 class _PaginainicialState extends State<Paginainicial> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(appBar: AppBar(title: Text('Página Inicial')));
   }
 }
