@@ -13,6 +13,7 @@ class _CadastrojogosState extends State<Cadastrojogos> {
   final _nomeJogoController = TextEditingController();
   final _precoController = TextEditingController();
   final _anoController = TextEditingController();
+  final _urlController = TextEditingController();
   var categoriaSelecionada = 'Cate1';
 
   bool ehNumero(String numero) {
@@ -71,6 +72,19 @@ class _CadastrojogosState extends State<Cadastrojogos> {
                 return null;
               },
             ),
+            TextFormField(
+              controller: _urlController,
+              decoration: InputDecoration(
+                labelText: 'Imagem (URL)',
+                border: OutlineInputBorder(),
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Valor obrigatório';
+                }
+                return null;
+              },
+            ),
             RadioGroup<String>(
               groupValue: categoriaSelecionada,
               onChanged: (value) {
@@ -124,6 +138,7 @@ class _CadastrojogosState extends State<Cadastrojogos> {
                       'nome_jogo': _nomeJogoController.text,
                       'preco': _precoController.text,
                       'ano_lancamento': _anoController.text,
+                      'url_images': _urlController.text,
                       'categoria': categoriaSelecionada,
                     });
 
@@ -135,6 +150,7 @@ class _CadastrojogosState extends State<Cadastrojogos> {
                     );
                     Navigator.of(context).pop();
                   } catch (e) {
+                    print(e);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Cadastro realizado com NÃO SUCESSO!"),
